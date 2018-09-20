@@ -1,2 +1,0 @@
-Name,Type,Min.,Max.,Default,Short Description
-probResource,Decimal,0,1,0.2,Assigns probability for each board space having a resource
