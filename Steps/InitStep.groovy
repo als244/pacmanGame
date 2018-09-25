@@ -19,13 +19,27 @@ initStep.run = {
   		}
 	}
 
+  LinkedHashMap<String, Integer> allPlayerXs = new LinkedHashMap<String, Integer>()
+  LinkedHashMap<String, Integer> allPlayerYs = new LinkedHashMap<String, Integer>()
+  
+ 
+  
   println "initStep.run"
-  g.random(0.6)
+  g.random(0.5)
   g.V.each { player->
   	
+    newX = r.nextInt(20)
+    newY = r.nextInt(20)
+    while (allPlayerXs.containsValue(newX) && allPlayerYs.containsValue(newY)){
+		newX = r.nextInt(20)
+      	newY = r.nextInt(20)
+    }
     
-    player.x = r.nextInt(20)
-    player.y = r.nextInt(20)
+    allPlayerXs.put(player.id, newX)
+    allPlayerYs.put(player.id, newY)
+
+    player.x = newX
+    player.y = newY
   	player.move = ""
     player.score = 0;
     board[player.x][player.y] = player.id
