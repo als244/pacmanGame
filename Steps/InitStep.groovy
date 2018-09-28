@@ -9,6 +9,7 @@ initStep.run = {
 
 	for (int i = 0; i < 20; i++){
   		for (int j = 0; j < 20; j++){
+          	// where parameter probResource should go
     		if (r.nextDouble() < probResource){
     			board[i][j] = "R"
               	nResources++;
@@ -25,7 +26,8 @@ initStep.run = {
  
   
   println "initStep.run"
-  g.random(0.5)
+  // where parameter connectivity should go
+  g.random(connectivity)
   g.V.each { player->
   	
     newX = r.nextInt(20)
@@ -42,6 +44,9 @@ initStep.run = {
     player.y = newY
   	player.move = ""
     player.score = 0;
+    if (board[player.x][player.y] == "R"){
+      nResources--;
+    }
     board[player.x][player.y] = player.id
     player.private.map = board
    
